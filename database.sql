@@ -271,6 +271,7 @@ CREATE TABLE IF NOT EXISTS `produto` (
   `qtd_minima` int(4) DEFAULT NULL,
   `marca` int(11) DEFAULT NULL,
   `categoria` int(11) NOT NULL DEFAULT '1',
+  `imagem` BLOB DEFAULT NULL,
   PRIMARY KEY (`id_produto`),
   KEY `cod_marca` (`marca`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=102 ;

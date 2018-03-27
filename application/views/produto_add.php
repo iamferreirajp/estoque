@@ -1,6 +1,6 @@
 ﻿<?php 
 
-	echo form_open('produto/create', 'class="form-cadastro"');
+	echo form_open_multipart('produto/create', 'class="form-cadastro"');
 	$field_array = array('Codigo', 'Nome', 'Categoria', 'Marca', 'Minimo');
 	
 	echo heading($headline, 3, 'class="form-cadastro-heading"');
@@ -24,9 +24,9 @@
 		echo ('<option value="'.$marca->id_marca.'">'.$marca->nome_marca.'</option>');
 	endforeach;
 	echo ('</select>');
-		
-	echo form_input('qtd_minima', '', 'title="Quantidade mínima do produto em estoque" class="number input-block-level input-small" placeholder="Minimo" type="number" required');
-	echo br();
+	
+	echo form_upload('imagem', '', 'title="Imagem do produto" class="number input-block-level input-xlarge"');
+
 	echo br();
 	echo form_submit('', 'Cadastrar', 'class="btn btn-primary"');
 	echo form_close();

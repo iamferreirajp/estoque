@@ -9,7 +9,7 @@
 
 		function listProduto()
 		{
-			$this->db->join('apresentacao', 'apresentacao.id_apresentacao = produto.unidade');
+			$this->db->join('marca', 'marca.id_marca = produto.marca');
 			$this->db->join('categoria', 'categoria.id_categoria = produto.categoria');
 			$this->db->order_by('nome_produto', 'asc');
 			return $this->db->get('produto');

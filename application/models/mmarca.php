@@ -31,5 +31,5 @@ class MMarca extends CI_Model{
 
 }
 
-/* End of file mapresentacao.php */
-/* Location: ./system/application/models/mapresentacao.php */
+/* End of file mcategoria.php */
+/* Location: ./system/application/models/mcategoria.php */

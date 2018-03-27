@@ -62,13 +62,13 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `apresentacao`
+-- Estrutura da tabela `marca`
 --
 
-CREATE TABLE IF NOT EXISTS `apresentacao` (
-  `id_apresentacao` int(11) NOT NULL AUTO_INCREMENT,
-  `nome_apresentacao` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`id_apresentacao`)
+CREATE TABLE IF NOT EXISTS `marca` (
+  `id_marca` int(11) NOT NULL AUTO_INCREMENT,
+  `nome_marca` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id_marca`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 -- --------------------------------------------------------
@@ -269,10 +269,10 @@ CREATE TABLE IF NOT EXISTS `produto` (
   `codigo` varchar(6) NOT NULL,
   `nome_produto` varchar(50) DEFAULT NULL,
   `qtd_minima` int(4) DEFAULT NULL,
-  `unidade` int(11) DEFAULT NULL,
+  `marca` int(11) DEFAULT NULL,
   `categoria` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_produto`),
-  KEY `cod_apresentacao` (`unidade`)
+  KEY `cod_marca` (`marca`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=102 ;
 
 --
@@ -331,7 +331,7 @@ CREATE TABLE IF NOT EXISTS `ver_produtos` (
 `codigo` varchar(6)
 ,`produto` varchar(50)
 ,`minimo` int(4)
-,`unidade` varchar(30)
+,`marca` varchar(30)
 );
 -- --------------------------------------------------------
 
@@ -343,7 +343,7 @@ CREATE TABLE IF NOT EXISTS `visualizar_estoque` (
 ,`produto` varchar(50)
 ,`quantidade` int(4)
 ,`minimo` int(4)
-,`apresentacao` varchar(30)
+,`marca` varchar(30)
 );
 -- --------------------------------------------------------
 
@@ -386,7 +386,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `ver_produtos`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `ver_produtos` AS select `p`.`codigo` AS `codigo`,`p`.`nome_produto` AS `produto`,`p`.`qtd_minima` AS `minimo`,`a`.`nome_apresentacao` AS `unidade` from (`produto` `p` join `apresentacao` `a`) where (`p`.`unidade` = `a`.`id_apresentacao`) order by `p`.`nome_produto`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `ver_produtos` AS select `p`.`codigo` AS `codigo`,`p`.`nome_produto` AS `produto`,`p`.`qtd_minima` AS `minimo`,`a`.`nome_marca` AS `marca` from (`produto` `p` join `marca` `a`) where (`p`.`marca` = `a`.`id_marca`) order by `p`.`nome_produto`;
 
 -- --------------------------------------------------------
 
@@ -395,7 +395,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `visualizar_estoque`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `visualizar_estoque` AS select `p`.`codigo` AS `codigo`,`p`.`nome_produto` AS `produto`,`e`.`quantidade` AS `quantidade`,`p`.`qtd_minima` AS `minimo`,`a`.`nome_apresentacao` AS `apresentacao` from ((`produto` `p` join `estoque` `e`) join `apresentacao` `a`) where ((`e`.`produto` = `p`.`id_produto`) and (`p`.`unidade` = `a`.`id_apresentacao`)) order by `p`.`nome_produto`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `visualizar_estoque` AS select `p`.`codigo` AS `codigo`,`p`.`nome_produto` AS `produto`,`e`.`quantidade` AS `quantidade`,`p`.`qtd_minima` AS `minimo`,`a`.`nome_marca` AS `marca` from ((`produto` `p` join `estoque` `e`) join `marca` `a`) where ((`e`.`produto` = `p`.`id_produto`) and (`p`.`marca` = `a`.`id_marca`)) order by `p`.`nome_produto`;
 
 -- --------------------------------------------------------
 

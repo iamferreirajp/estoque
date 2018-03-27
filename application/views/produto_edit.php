@@ -1,7 +1,7 @@
 ﻿<?php 
 
 	echo form_open('produto/update', 'class="form-cadastro"');
-	$field_array = array('Codigo', 'Nome', 'Categoria', 'Unidade', 'Minimo');
+	$field_array = array('Codigo', 'Nome', 'Categoria', 'Marca', 'Minimo');
 	
 	echo heading($headline, 3, 'class="form-cadastro-heading"');
 	echo br();
@@ -23,12 +23,12 @@
 	endforeach;
 	echo ('</select>');
 	
-	echo ('<select name="unidade" title="Unidade de medida do produto" class="required input-block-level input-xlarge">');
-	foreach($unidades->result() as $unidade):
-		echo ('<option value="'.$unidade->id_apresentacao.'"');
-			if($unidade->id_apresentacao == $produto[0]->unidade)
+	echo ('<select name="marca" title="marca de medida do produto" class="required input-block-level input-xlarge">');
+	foreach($marcas->result() as $marca):
+		echo ('<option value="'.$marca->id_marca.'"');
+			if($marca->id_marca == $produto[0]->marca)
 				echo('selected="selected"');
-			echo('>'.$unidade->nome_apresentacao.'</option>');
+			echo('>'.$marca->nome_marca.'</option>');
 	endforeach;
 	echo ('</select>');
 	

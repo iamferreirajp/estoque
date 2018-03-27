@@ -53,7 +53,7 @@
 										<li><?php echo anchor('produto/listing', 'Listagem'); ?></li>
 										<li><?php echo anchor('produto/add', 'Cadastrar Produto'); ?></li>
 										<li class="divider"></li>
-										<li><?php echo anchor('apresentacao/add', 'Cadastrar Apresentação'); ?></li>
+										<li><?php echo anchor('marca/add', 'Cadastrar Marca'); ?></li>
 										<li><?php echo anchor('categoria/add', 'Cadastrar Categoria'); ?></li>
 									</ul>
 								</li>

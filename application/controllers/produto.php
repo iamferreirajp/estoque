@@ -19,8 +19,8 @@ class Produto extends CI_Controller {
         $data['title'] = "Cadastro de Produto - Controle de Estoque";
         $data['headline'] = "Cadastro de Produtos";
         $data['include'] = "produto_add";
-		$this->load->model('MApresentacao', '', TRUE);
-		$data['unidades'] = $this->MApresentacao->listApresentacao();
+		$this->load->model('MMarca', '', TRUE);
+		$data['marcas'] = $this->MMarca->listMarca();
 		$this->load->model('MCategoria', '', TRUE);
 		$data['categorias'] = $this->MCategoria->listCategoria();
         $this->load->view('template', $data);
@@ -41,8 +41,8 @@ class Produto extends CI_Controller {
 		$data['title'] = "Modificar Produto - Controle de Estoque";
 		$data['headline'] = "Edição de Produtos";
 		$data['include'] = "produto_edit";
-		$this->load->model('MApresentacao', '', TRUE);
-		$data['unidades'] = $this->MApresentacao->listApresentacao();
+		$this->load->model('MMarca', '', TRUE);
+		$data['marcas'] = $this->MMarca->listMarca();
 		$this->load->model('MCategoria', '', TRUE);
 		$data['categorias'] = $this->MCategoria->listCategoria();
 		$this->load->view('template', $data);
@@ -71,7 +71,7 @@ class Produto extends CI_Controller {
 		$tmpl = array ( 'table_open'  => '<table id="tabela" class="table table-striped table-bordered table-hover">' );
 		$this->table->set_template($tmpl);
 		$this->table->set_empty("&nbsp;"); 
-		$this->table->set_heading('Editar', 'Codigo', 'Nome', 'Categoria', 'Unidade', 'Minimo', 'Excluir');
+		$this->table->set_heading('Editar', 'Codigo', 'Nome', 'Categoria', 'Marca', 'Minimo', 'Excluir');
 		$table_row = array();
 		foreach ($qry->result() as $produto)
 		{
@@ -80,7 +80,7 @@ class Produto extends CI_Controller {
 			$table_row[] = $produto->codigo;
 			$table_row[] = $produto->nome_produto;
 			$table_row[] = $produto->nome_categoria;
-			$table_row[] = $produto->nome_apresentacao;
+			$table_row[] = $produto->nome_marca;
 			$table_row[] = $produto->qtd_minima;
 			$table_row[] = anchor('produto/delete/' . $produto->id_produto, '<span class="ui-icon ui-icon-trash"></span>', 
 							"onClick=\" return confirm('Tem certeza que deseja remover o registro?')\"");

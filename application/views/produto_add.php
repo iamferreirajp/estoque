@@ -1,7 +1,7 @@
 ﻿<?php 
 
 	echo form_open('produto/create', 'class="form-cadastro"');
-	$field_array = array('Codigo', 'Nome', 'Categoria', 'Apresentacao', 'Minimo');
+	$field_array = array('Codigo', 'Nome', 'Categoria', 'Marca', 'Minimo');
 	
 	echo heading($headline, 3, 'class="form-cadastro-heading"');
 	echo br();
@@ -18,10 +18,10 @@
 	endforeach;
 	echo ('</select>');
 		
-	echo ('<select name="unidade" title="Unidade de medida do produto" class="input-block-level input-xlarge" required>');
-	echo ('<option value="">Apresentacao</option>');
-	foreach($unidades->result() as $unidade):
-		echo ('<option value="'.$unidade->id_apresentacao.'">'.$unidade->nome_apresentacao.'</option>');
+	echo ('<select name="marca" title="Marca do produto" class="input-block-level input-xlarge" required>');
+	echo ('<option value="">Marca</option>');
+	foreach($marcas->result() as $marca):
+		echo ('<option value="'.$marca->id_marca.'">'.$marca->nome_marca.'</option>');
 	endforeach;
 	echo ('</select>');
 		

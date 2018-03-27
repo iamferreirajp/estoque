@@ -55,20 +55,17 @@ class Estoque extends CI_Controller {
 		$tmpl = array ( 'table_open'  => '<table id="tabela" class="table table-striped table-bordered table-hover">' );
 		$this->table->set_template($tmpl);
 		$this->table->set_empty("&nbsp;"); 
-		$this->table->set_heading('Editar', 'Produto', 'Quantidade');
+		$this->table->set_heading('Editar', 'Produto', 'Quantidade na Loja', 'Quantidade no Depósito', 'Quantidade Total');
 		$table_row = array();
 		foreach ($qry->result() as $estoque)
 		{
 			$table_row = NULL;
 			$table_row[] = anchor('estoque/edit/' . $estoque->id_estoque, '<span class="ui-icon ui-icon-pencil"></span>');
 			$table_row[] = $estoque->nome_produto;
+			$table_row[] = $estoque->quantidade_loja;
+			$table_row[] = $estoque->quantidade_deposito;
+			$table_row[] = $estoque->quantidade_deposito + $estoque->quantidade_loja;
 			if($estoque->quantidade <= $estoque->qtd_minima)
-			{
-				$table_row[] = ('<span class="badge badge-important">' . $estoque->quantidade . '</span>');
-			} else
-			{
-				$table_row[] = $estoque->quantidade;
-			}
 			$this->table->add_row($table_row);
 		}    
 		$table = $this->table->generate();

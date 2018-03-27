@@ -112,7 +112,9 @@ CREATE TABLE IF NOT EXISTS `consumo_produto` (
 
 CREATE TABLE IF NOT EXISTS `estoque` (
   `id_estoque` int(11) NOT NULL AUTO_INCREMENT,
-  `quantidade` int(4) NOT NULL,
+  `quantidade_loja` int(5) NOT NULL,
+  `quantidade_deposito` int(5) NOT NULL,
+  `quantidade` int(5) NOT NULL,
   `produto` int(11) NOT NULL,
   PRIMARY KEY (`id_estoque`),
   KEY `cod_produto` (`produto`)

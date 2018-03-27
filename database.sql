@@ -266,7 +266,7 @@ insert into perfil(id_perfil, nome_perfil, nivel) values(2, 'user', 2);
 
 CREATE TABLE IF NOT EXISTS `produto` (
   `id_produto` int(11) NOT NULL AUTO_INCREMENT,
-  `codigo` varchar(6) NOT NULL,
+  `codigo` varchar(9) NOT NULL,
   `nome_produto` varchar(50) DEFAULT NULL,
   `qtd_minima` int(4) DEFAULT NULL,
   `marca` int(11) DEFAULT NULL,

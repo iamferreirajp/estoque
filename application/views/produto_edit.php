@@ -31,8 +31,6 @@
 			echo('>'.$marca->nome_marca.'</option>');
 	endforeach;
 	echo ('</select>');
-	
-	echo form_input('qtd_minima', $produto[0]->qtd_minima, 'title="Quantidade mínima do produto em estoque" class="required number input-block-level  input-small" placeholder="Quantidade"');
 	echo br();
 	
 	echo form_submit('', 'Atualizar', 'class="btn btn-primary"'); 
